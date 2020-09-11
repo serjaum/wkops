@@ -11,8 +11,8 @@ if [ -f "$PWD/wkops" ]; then
   cp wkops $WKOPSROOT/
 else
   # remote install
-  echo remote install
-  #wget https://raw.githubusercontent.com/serjaum/wkops/master/wkops -O $WKOPSROOT/wkops
+  echo "Remote install"
+  wget https://raw.githubusercontent.com/serjaum/wkops/master/wkops -O $WKOPSROOT/wkops
 fi
 
 chmod +x $WKOPSROOT/wkops
