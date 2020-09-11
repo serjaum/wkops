@@ -6,6 +6,8 @@ if you manage multiple clusters with different versions of kops, wkops will help
 
 ## Installation
 
+### Local
+
 1. Clone this repo
 
 ```
@@ -19,6 +21,20 @@ chmod +x ./install.sh && ./install.sh
 ```
 
 3. Add the wkops root folder to your $PATH
+
+```
+export PATH=~/.wkops:\$PATH
+```
+
+### Remote
+
+1. Run in your terminal
+
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/serjaum/wkops/master/install.sh)"
+```
+
+2. Add the wkops root folder to your $PATH
 
 ```
 export PATH=~/.wkops:\$PATH
