@@ -1,0 +1,61 @@
+#!/bin/bash
+
+WKOPSROOT="$HOME/.wkops/"
+
+function install {
+    output="$HOME/.wkops/bin/kops$1"
+    wget https://github.com/kubernetes/kops/releases/download/v$1/kops-linux-amd64 -O $output -q --show-progress
+    if [[ "$?" -ne "0" ]]; then
+        rm $output
+        echo "Cannot download kops version $1"
+        exit 1
+    fi
+    chmod +x $output
+}
+
+function use {
+    if [ -f "$WKOPSROOT/bin/kops$1" ]; then
+      echo "Creating a link to kops $1"
+      echo ""
+      ln -sf $HOME/.wkops/bin/kops$1 $HOME/.wkops/kops
+      echo -n "You are using kops "
+      kops version
+    else
+      echo "You do not have the kops $1"
+      exit 1
+    fi
+}
+
+function list {
+    echo "Kops versions"
+    echo ""
+    ls $WKOPSROOT/bin | sed "s/kops//g"
+}
+
+function delete {
+    echo "Deleting kops $1"
+    rm $WKOPSROOT/bin/kops$1
+}
+
+case "$1" in
+        install)
+            install $2
+            ;;
+        
+        use)
+            use $2
+            ;;
+
+        list)
+            list
+            ;;         
+
+        delete)
+            delete $2
+            ;;    
+
+        *)
+            echo $"Usage: $0 {install|use|list|delete}"
+            exit 1
+ 
+esac
