@@ -75,7 +75,7 @@ wkops delete 1.18.0
 
 ## Troubleshooting
 
-  * Eu altero a versao no wkops porem a versao nao muda.
+  * I change the version in wkops but the version does not change.
     There is probably a conflict in your $path, remove all other versions of kops in the other folders like /usr/local/bin etc.    
 
 ## Contributing
