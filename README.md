@@ -73,5 +73,10 @@ You are using kops Version 1.18.0 (git-698bf974d8)
 wkops delete 1.18.0
 ```
 
+## Troubleshooting
+
+  * Eu altero a versao no wkops porem a versao nao muda.
+    There is probably a conflict in your $path, remove all other versions of kops in the other folders like /usr/local/bin etc.    
+
 ## Contributing
 Pull requests are welcome. Feel free to contribute
