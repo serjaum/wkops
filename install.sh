@@ -12,7 +12,7 @@ if [ -f "$PWD/wkops" ]; then
 else
   # remote install
   echo "Remote install"
-  wget https://raw.githubusercontent.com/serjaum/wkops/master/wkops -O $WKOPSROOT/wkops
+  wget https://raw.githubusercontent.com/serjaum/wkops/master/wkops -O $HOME/.wkops/wkops
 fi
 
 chmod +x $WKOPSROOT/wkops
