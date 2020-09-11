@@ -75,6 +75,3 @@ wkops delete 1.18.0
 
 ## Contributing
 Pull requests are welcome. Feel free to contribute
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
