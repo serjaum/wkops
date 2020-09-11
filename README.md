@@ -2,6 +2,8 @@
 
 wkops is a [kops](https://github.com/kubernetes/kops) version manager
 
+if you manage multiple clusters with different versions of kops, wkops will help you with that
+
 ## Installation
 
 1. Clone this repo
@@ -71,8 +73,11 @@ You are using kops Version 1.18.0 (git-698bf974d8)
 wkops delete 1.18.0
 ```
 
+## Troubleshooting
+
+  * I change the version in wkops but the kops version does not change.
+  
+    There is probably a conflict in your $path, remove all other versions of kops in the other folders like /usr/local/bin etc.    
+
 ## Contributing
 Pull requests are welcome. Feel free to contribute
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
