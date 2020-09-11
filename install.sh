@@ -6,8 +6,15 @@ echo "Creating the wkops root folder at $WKOPSROOT"
 mkdir -p $WKOPSROOT/bin
 
 # local install
-echo "Copying the wkops to $WKOPSROOT"
-cp wkops $WKOPSROOT
+if [ -f "$PWD/wkops" ]; then
+  echo "Copying the wkops to $WKOPSROOT"
+  cp wkops $WKOPSROOT
+else
+  # remote install
+  wget https://raw.githubusercontent.com/serjaum/wkops/master/wkops -O $WKOPSROOT
+fi
+
+chmod +x $WKOPSROOT/wkops
 
 # check path
 
