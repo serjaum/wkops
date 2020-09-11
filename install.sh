@@ -1,6 +1,6 @@
 #!/bin/bash
 
-WKOPSROOT="$HOME/.wkops/"
+WKOPSROOT="$HOME/.wkops"
 
 echo "Creating the wkops root folder at $WKOPSROOT"
 mkdir -p $WKOPSROOT/bin
@@ -8,7 +8,7 @@ mkdir -p $WKOPSROOT/bin
 # local install
 if [ -f "$PWD/wkops" ]; then
   echo "Copying the wkops to $WKOPSROOT"
-  cp wkops $WKOPSROOT
+  cp wkops $WKOPSROOT/
 else
   # remote install
   echo remote install
