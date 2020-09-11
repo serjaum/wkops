@@ -1,2 +1,80 @@
-# wkops
-Which Kops? - Kops version manage
+# wkops - Which kops?
+
+wkops is a [kops](https://github.com/kubernetes/kops) version manager
+
+## Installation
+
+1. Clone this repo
+
+```
+git clone git@github.com:serjaum/wkops.git
+```
+
+2. Run the install script
+
+```
+chmod +x ./install.sh && ./install.sh
+```
+
+3. Add the wkops root folder to your $PATH
+
+```
+export PATH=~/.wkops:\$PATH
+```
+
+## Usage
+
+### Installing a specific kops version
+
+
+```
+wkops install 1.18.0
+```
+
+### Listing all versions installed
+
+```
+wkops list
+```
+
+output
+
+```
+~: wkops list
+
+Kops versions
+
+1.17.0
+1.17.1
+1.18.0
+```
+
+### To use a version
+
+```
+wkops use 1.18.0
+```
+
+output:
+
+```
+~: wkops use 1.18.0
+
+Creating a link to kops 1.18.0
+
+You are using kops Version 1.18.0 (git-698bf974d8)
+```
+
+### To delete a version
+
+```
+wkops delete 1.18.0
+```
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
