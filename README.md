@@ -2,6 +2,8 @@
 
 wkops is a [kops](https://github.com/kubernetes/kops) version manager
 
+if you manage multiple clusters with different versions of kops, wkops will help you with that
+
 ## Installation
 
 1. Clone this repo
