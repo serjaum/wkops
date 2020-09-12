@@ -11,12 +11,11 @@ function install {
         exit 1
     fi
     chmod +x $output
+    use $1
 }
 
 function use {
     if [ -f "$WKOPSROOT/bin/kops$1" ]; then
-      echo "Creating a link to kops $1"
-      echo ""
       ln -sf $HOME/.wkops/bin/kops$1 $HOME/.wkops/kops
       echo -n "You are using kops "
       kops version
@@ -37,6 +36,29 @@ function delete {
     rm $WKOPSROOT/bin/kops$1
 }
 
+function detect {
+    if ! kubectl get nodes > /dev/null; then
+        echo "Err:"
+        exit 1
+    fi
+    version=$(kubectl get ds kops-controller -n kube-system -o jsonpath='{.metadata.labels.version}' | sed "s/v//g")
+    echo "kops version: $version"
+    k=$(list | grep $version)
+    if [ -z "$k" ]; then
+    read -r -p "Do you want to install kops $version? [y/N] " response
+        case "$response" in
+            [yY][eE][sS]|[yY]) 
+                install $version
+                ;;
+            *)
+                exit 0
+                ;;
+        esac
+    else
+        use $version
+    fi
+}
+
 case "$1" in
         install)
             install $2
@@ -53,9 +75,13 @@ case "$1" in
         delete)
             delete $2
             ;;    
+        
+        detect)
+            detect
+            ;;  
 
         *)
-            echo $"Usage: $0 {install|use|list|delete}"
+            echo $"Usage: $0 {install|use|list|delete|detect|help}"
             exit 1
  
 esac

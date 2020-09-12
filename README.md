@@ -83,6 +83,10 @@ Creating a link to kops 1.18.0
 You are using kops Version 1.18.0 (git-698bf974d8)
 ```
 
+### Auto detection
+
+If you want to auto detect the kops version, you need to configure the [state store location](https://github.com/kubernetes/kops/blob/master/docs/state.md)
+
 ### To delete a version
 
 ```
