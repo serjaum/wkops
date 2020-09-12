@@ -85,7 +85,19 @@ You are using kops Version 1.18.0 (git-698bf974d8)
 
 ### Auto detection
 
-If you want to auto detect the kops version, you need to configure the [state store location](https://github.com/kubernetes/kops/blob/master/docs/state.md)
+```
+wkops detect
+```
+
+output:
+
+```
+~: wkops detect
+kops version: 1.17.1
+Do you want to install kops 1.17.1? [y/N] y
+/home/pipefy/.wkops/bin/kops1.17.1              100%[==========>]  92,79M  7,18MB/s    in 10s     
+You are using kops Version 1.17.1 (git-4dfd4779fe)
+```
 
 ### To delete a version
 
