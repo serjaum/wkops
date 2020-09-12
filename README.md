@@ -66,6 +66,25 @@ Kops versions
 1.17.1
 1.18.0
 ```
+### Listing all versions available from kops repo
+
+```
+wkops list --remote
+```
+
+output
+
+```
+~: wkops list --remote
+
+Listing kops versions from repository
+v1.18.1
+v1.17.2
+v1.19.0-alpha.3
+.
+.
+.
+```
 
 ### To use a version
 

@@ -26,9 +26,14 @@ function use {
 }
 
 function list {
-    echo "Kops versions"
-    echo ""
-    ls $WKOPSROOT/bin | sed "s/kops//g"
+    if [ "$1" == "--remote" ]; then
+        echo "Listing kops versions from repository"
+        curl -sS https://api.github.com/repos/kubernetes/kops/releases | jq  -r '.[].name'
+    else
+        echo "Kops versions installed"
+        echo ""
+        ls $WKOPSROOT/bin | sed "s/kops//g"
+    fi
 }
 
 function delete {
@@ -69,7 +74,7 @@ case "$1" in
             ;;
 
         list)
-            list
+            list $2
             ;;         
 
         delete)
