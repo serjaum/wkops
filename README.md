@@ -20,7 +20,7 @@ git clone git@github.com:serjaum/wkops.git
 chmod +x ./install.sh && ./install.sh
 ```
 
-3. Add the wkops root folder to your $PATH
+3. Add the wkops root folder to your $PATH or add the line below to your ~/.bashrc, ~/.profile, or ~/.zshrc file to have it automatically sourced upon login: 
 
 ```
 export PATH=~/.wkops:\$PATH
