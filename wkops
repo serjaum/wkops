@@ -32,7 +32,13 @@ function list {
     else
         echo "Kops versions installed"
         echo ""
-        ls $WKOPSROOT/bin | sed "s/kops//g"
+        versions=$(ls $WKOPSROOT/bin | sed "s/kops//g")
+        if [ -z "$versions" ]; then
+            echo "No kops installed"
+            exit 1
+        else
+           echo "$versions"
+        fi
     fi
 }
 
@@ -51,6 +57,10 @@ function delete {
     else
         echo "Deleting kops $1"
         rm $WKOPSROOT/bin/kops$1
+        if [ "$?" -ne "0" ]; then
+            echo "Version $1 does not exists"
+            wkops list
+        fi
     fi
 }
 
