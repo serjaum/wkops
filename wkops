@@ -3,15 +3,21 @@
 WKOPSROOT="$HOME/.wkops/"
 
 function install {
-    output="$HOME/.wkops/bin/kops$1"
-    wget https://github.com/kubernetes/kops/releases/download/v$1/kops-linux-amd64 -O $output -q --show-progress
+    check_ver=$1
+    if [[ ${check_ver:0:1} == "v" ]]; then
+        version="${check_ver:1}"
+    else
+        version=$check_ver
+    fi
+    output="$HOME/.wkops/bin/kops$version"
+    wget https://github.com/kubernetes/kops/releases/download/v$version/kops-linux-amd64 -O $output -q --show-progress
     if [[ "$?" -ne "0" ]]; then
         rm $output
-        echo "Cannot download kops version $1"
+        echo "Cannot download kops version $version"
         exit 1
     fi
     chmod +x $output
-    use $1
+    use $version
 }
 
 function use {
