@@ -75,6 +75,10 @@ function detect {
         echo "Err:"
         exit 1
     fi
+    if ! kubectl get ds kops-controller -n kube-system; then
+        echo "You do not have kops-controller"
+        exit 1
+    fi
     version=$(kubectl get ds kops-controller -n kube-system -o jsonpath='{.metadata.labels.version}' | sed "s/v//g")
     echo "kops version: $version"
     k=$(list | grep $version)
