@@ -75,7 +75,7 @@ function detect {
         echo "Err:"
         exit 1
     fi
-    if ! kubectl get ds kops-controller -n kube-system; then
+    if ! kubectl get ds kops-controller -n kube-system > /dev/null; then
         echo "You do not have kops-controller"
         exit 1
     fi
